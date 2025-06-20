@@ -1,5 +1,16 @@
 # example-backend
 
+## 0.0.40-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-catalog-backend@3.0.0-next.0
+  - @backstage/plugin-scaffolder-backend@2.0.1-next.0
+  - @backstage/plugin-mcp-actions-backend@0.1.1-next.0
+  - @backstage/plugin-scaffolder-backend-module-github@0.8.1-next.0
+  - @backstage/plugin-scaffolder-backend-module-notifications@0.1.12-next.0
+
 ## 0.0.39
 
 ### Patch Changes

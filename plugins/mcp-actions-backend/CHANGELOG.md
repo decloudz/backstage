@@ -1,5 +1,11 @@
 # @backstage/plugin-mcp-actions-backend
 
+## 0.1.1-next.0
+
+### Patch Changes
+
+- 6bc0799: Fixed the example in the README for generating a static token by adding a subject field
+
 ## 0.1.0
 
 ### Minor Changes

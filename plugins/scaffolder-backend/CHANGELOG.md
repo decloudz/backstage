@@ -1,5 +1,21 @@
 # @backstage/plugin-scaffolder-backend
 
+## 2.0.1-next.0
+
+### Patch Changes
+
+- dbde180: An internal refactor which adds additional types to experimental checkpoints
+- Updated dependencies
+  - @backstage/plugin-scaffolder-node@0.9.1-next.0
+  - @backstage/plugin-scaffolder-backend-module-azure@0.2.11-next.0
+  - @backstage/plugin-scaffolder-backend-module-bitbucket@0.3.12-next.0
+  - @backstage/plugin-scaffolder-backend-module-bitbucket-cloud@0.2.11-next.0
+  - @backstage/plugin-scaffolder-backend-module-bitbucket-server@0.2.11-next.0
+  - @backstage/plugin-scaffolder-backend-module-gerrit@0.2.11-next.0
+  - @backstage/plugin-scaffolder-backend-module-gitea@0.2.11-next.0
+  - @backstage/plugin-scaffolder-backend-module-github@0.8.1-next.0
+  - @backstage/plugin-scaffolder-backend-module-gitlab@0.9.3-next.0
+
 ## 2.0.0
 
 ### Major Changes

@@ -1,5 +1,15 @@
 # example-app
 
+## 0.2.111-next.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @backstage/plugin-techdocs@1.13.2-next.0
+  - @backstage/canon@0.6.0-next.0
+  - @backstage/cli@0.33.0
+  - @backstage/plugin-techdocs-module-addons-contrib@1.1.25
+
 ## 0.2.110
 
 ### Patch Changes

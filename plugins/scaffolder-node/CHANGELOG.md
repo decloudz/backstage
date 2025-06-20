@@ -1,5 +1,11 @@
 # @backstage/plugin-scaffolder-node
 
+## 0.9.1-next.0
+
+### Patch Changes
+
+- dbde180: An internal refactor which adds additional types to experimental checkpoints
+
 ## 0.9.0
 
 ### Minor Changes
