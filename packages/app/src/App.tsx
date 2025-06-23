@@ -85,10 +85,7 @@ import {
 } from '@backstage/plugin-notifications';
 import { CustomizableHomePage } from './components/home/CustomizableHomePage';
 import { HomePage } from './components/home/HomePage';
-import {
-  UnifiedThemeProvider,
-  themes as builtinThemes,
-} from '@backstage/theme';
+import { UnifiedThemeProvider } from '@backstage/theme';
 import {
   greshamTechLightTheme,
   greshamTechDarkTheme,
@@ -104,8 +101,8 @@ const app = createApp({
   },
   themes: [
     {
-      id: 'greshamtech-light',
-      title: 'Gresham Technologies Light',
+      id: 'gresham-light',
+      title: 'Gresham Technologies',
       variant: 'light',
       icon: <LightIcon />,
       Provider: ({ children }) => (
@@ -116,7 +113,7 @@ const app = createApp({
       ),
     },
     {
-      id: 'greshamtech-dark',
+      id: 'gresham-dark',
       title: 'Gresham Technologies Dark',
       variant: 'dark',
       icon: <DarkIcon />,
