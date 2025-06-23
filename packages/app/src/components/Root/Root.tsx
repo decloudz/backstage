@@ -88,23 +88,18 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
       </SidebarGroup>
       <SidebarDivider />
       <SidebarGroup label="Menu" icon={<MenuIcon />}>
-        {/* Global nav, not org-specific */}
-        <SidebarItem icon={HomeIcon} to="home" text="Home" />
-        <SidebarItem icon={CategoryIcon} to="/" text="Catalog">
-          <SidebarSubmenu title="Catalog">
+        {/* GreshamTech Developer Portal Navigation */}
+        <SidebarItem icon={HomeIcon} to="home" text="Developer Home" />
+        <SidebarItem icon={CategoryIcon} to="/" text="Service Catalog">
+          <SidebarSubmenu title="Services & Components">
             <SidebarSubmenuItem
-              title="Domains"
-              to="catalog?filters[kind]=domain"
-              icon={useApp().getSystemIcon('kind:domain')}
+              title="Microservices"
+              to="catalog?filters[kind]=component&filters[spec.type]=service"
+              icon={useApp().getSystemIcon('kind:component')}
             />
             <SidebarSubmenuItem
-              title="Systems"
-              to="catalog?filters[kind]=system"
-              icon={useApp().getSystemIcon('kind:system')}
-            />
-            <SidebarSubmenuItem
-              title="Components"
-              to="catalog?filters[kind]=component"
+              title="Libraries"
+              to="catalog?filters[kind]=component&filters[spec.type]=library"
               icon={useApp().getSystemIcon('kind:component')}
             />
             <SidebarSubmenuItem
@@ -114,46 +109,55 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
             />
             <SidebarDivider />
             <SidebarSubmenuItem
-              title="Resources"
-              to="catalog?filters[kind]=resource"
-              icon={useApp().getSystemIcon('kind:resource')}
+              title="Systems"
+              to="catalog?filters[kind]=system"
+              icon={useApp().getSystemIcon('kind:system')}
+            />
+            <SidebarSubmenuItem
+              title="Domains"
+              to="catalog?filters[kind]=domain"
+              icon={useApp().getSystemIcon('kind:domain')}
             />
             <SidebarDivider />
             <SidebarSubmenuItem
-              title="Groups"
-              to="catalog?filters[kind]=group"
-              icon={useApp().getSystemIcon('kind:group')}
+              title="Infrastructure"
+              to="catalog?filters[kind]=resource"
+              icon={useApp().getSystemIcon('kind:resource')}
             />
             <SidebarSubmenuItem
-              title="Users"
-              to="catalog?filters[kind]=user"
-              icon={useApp().getSystemIcon('kind:user')}
+              title="Teams"
+              to="catalog?filters[kind]=group"
+              icon={useApp().getSystemIcon('kind:group')}
             />
           </SidebarSubmenu>
         </SidebarItem>
         <MyGroupsSidebarItem
-          singularTitle="My Squad"
-          pluralTitle="My Squads"
+          singularTitle="My Team"
+          pluralTitle="My Teams"
           icon={useApp().getSystemIcon('group')!}
         />
         <SidebarItem
           icon={useApp().getSystemIcon('kind:api')!}
           to="api-docs"
-          text="APIs"
+          text="API Explorer"
         />
         <SidebarItem
           icon={useApp().getSystemIcon('docs')!}
           to="docs"
-          text="Docs"
+          text="Documentation"
         />
-        <SidebarItem icon={CreateComponentIcon} to="create" text="Create..." />
-        {/* End global nav */}
+        <SidebarItem
+          icon={CreateComponentIcon}
+          to="create"
+          text="Create Service"
+        />
+        {/* End GreshamTech nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
           <SidebarItem
             icon={UpdateIcon}
             to="catalog-unprocessed-entities"
-            text="Unprocessed Entities"
+            text="Pending Reviews"
           />
         </SidebarScrollWrapper>
       </SidebarGroup>

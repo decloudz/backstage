@@ -78,7 +78,10 @@ export const HomePage = () => {
   return (
     <SearchContextProvider>
       <Page themeId="home">
-        <Header title={<WelcomeTitle />} pageTitleOverride="Home">
+        <Header
+          title="Welcome to GreshamTech Developer Portal"
+          pageTitleOverride="Developer Home"
+        >
           <HeaderWorldClock
             clockConfigs={clockConfigs}
             customTimeFormat={timeFormat}
@@ -98,7 +101,7 @@ export const HomePage = () => {
                     notchedOutline: classes.searchBarOutline,
                   },
                 }}
-                placeholder="Search"
+                placeholder="Search services, APIs, documentation..."
               />
             </Grid>
             <Grid container item xs={12}>
