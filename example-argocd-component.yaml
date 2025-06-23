@@ -1,0 +1,70 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: example-argocd-app
+  title: Example ArgoCD Application
+  description: A sample component with ArgoCD integration
+  annotations:
+    # ArgoCD annotations - choose one of these options:
+    
+    # Option 1: Single application by name
+    argocd/app-name: 'my-sample-app'
+    
+    # Option 2: Multiple applications by selector (uncomment if using this)
+    # argocd/app-selector: 'app=my-sample-app'
+    
+    # Optional: specify the ArgoCD project
+    # argocd/project-name: 'default'
+    
+    # Optional: specify the namespace where the ArgoCD Application is defined
+    # argocd/app-namespace: 'argocd'
+    
+    # Optional: specify which ArgoCD instance to use (if multiple configured)
+    # argocd/instance-name: 'argoInstance1'
+    
+    # Kubernetes annotations for resource discovery
+    backstage.io/kubernetes-id: example-argocd-app
+    backstage.io/kubernetes-namespace: default
+  labels:
+    type: service
+    lifecycle: experimental
+    system: example-system
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-team
+  system: example-system
+  providesApis:
+    - example-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: example-api
+  description: Example API for the ArgoCD demo app
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: platform-team
+  system: example-system
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Example API
+      version: 1.0.0
+    paths:
+      /health:
+        get:
+          summary: Health check
+          responses:
+            '200':
+              description: OK
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: example-system
+  description: Example system with ArgoCD integration
+spec:
+  owner: platform-team
+  domain: platform

@@ -47,6 +47,7 @@
     "@backstage/plugin-events-backend": "workspace:^",
     "@backstage/plugin-events-backend-module-google-pubsub": "workspace:^",
     "@backstage/plugin-kubernetes-backend": "workspace:^",
+    "@roadiehq/backstage-plugin-argo-cd-backend": "^4.3.1",
     "@backstage/plugin-mcp-actions-backend": "workspace:^",
     "@backstage/plugin-notifications-backend": "workspace:^",
     "@backstage/plugin-permission-backend": "workspace:^",

@@ -74,9 +74,31 @@ proxy:
       target: https://api.pagerduty.com
       headers:
         Authorization: Token token=${PAGERDUTY_TOKEN}
+    
+    # ArgoCD proxy configuration
+    '/argocd/api':
+      target: ${ARGOCD_SERVER_URL}/api/v1/
+      changeOrigin: true
+      secure: false
+      headers:
+        Cookie:
+          $env: ARGOCD_AUTH_TOKEN
 
 organization:
   name: My Company
+
+# ArgoCD backend configuration
+argocd:
+  username: ${ARGOCD_USERNAME}
+  password: ${ARGOCD_PASSWORD}
+  baseUrl: ${ARGOCD_SERVER_URL}
+  appLocatorMethods:
+    - type: 'config'
+      instances:
+        - name: argoInstance1
+          url: ${ARGOCD_SERVER_URL}
+          username: ${ARGOCD_USERNAME}
+          password: ${ARGOCD_PASSWORD}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -198,6 +220,9 @@ catalog:
       target: ../../plugins/scaffolder-backend/sample-templates/all-templates.yaml
       rules:
         - allow: [Template]
+    # Example ArgoCD component
+    - type: file
+      target: ../../example-argocd-component.yaml
 
 scaffolder:
   # Use to customize default commit author info used when new components are created

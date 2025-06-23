@@ -65,6 +65,11 @@ import {
   EntityKubernetesClusterContent,
 } from '@backstage/plugin-kubernetes-cluster';
 import {
+  EntityArgoCDOverviewCard,
+  EntityArgoCDHistoryCard,
+  isArgocdAvailable,
+} from '@roadiehq/backstage-plugin-argo-cd';
+import {
   EntityGroupProfileCard,
   EntityMembersListCard,
   EntityOwnershipCard,
@@ -115,6 +120,13 @@ const techdocsContent = (
 
 export const cicdContent = (
   <EntitySwitch>
+    <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid item xs={12}>
+          <EntityArgoCDHistoryCard />
+        </Grid>
+      </Grid>
+    </EntitySwitch.Case>
     <EntitySwitch.Case>
       <EmptyState
         title="No CI/CD available for this entity"
@@ -188,6 +200,14 @@ const overviewContent = (
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
+
+    <EntitySwitch>
+      <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
+        <Grid item sm={6}>
+          <EntityArgoCDOverviewCard />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
   </Grid>
 );
 

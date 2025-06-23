@@ -57,6 +57,7 @@
     "@backstage/plugin-home": "workspace:^",
     "@backstage/plugin-kubernetes": "workspace:^",
     "@backstage/plugin-kubernetes-cluster": "workspace:^",
+    "@roadiehq/backstage-plugin-argo-cd": "^2.9.1",
     "@backstage/plugin-notifications": "workspace:^",
     "@backstage/plugin-org": "workspace:^",
     "@backstage/plugin-permission-react": "workspace:^",

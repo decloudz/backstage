@@ -42,6 +42,7 @@ backend.add(import('@backstage/plugin-catalog-backend'));
 backend.add(import('@backstage/plugin-events-backend'));
 backend.add(import('@backstage/plugin-devtools-backend'));
 backend.add(import('@backstage/plugin-kubernetes-backend'));
+backend.add(import('@roadiehq/backstage-plugin-argo-cd-backend/alpha'));
 backend.add(
   import('@backstage/plugin-permission-backend-module-allow-all-policy'),
 );
