@@ -88,85 +88,13 @@ import { HomePage } from './components/home/HomePage';
 import {
   UnifiedThemeProvider,
   themes as builtinThemes,
-  createUnifiedTheme,
-  createBaseThemeOptions,
-  palettes,
 } from '@backstage/theme';
+import {
+  greshamTechLightTheme,
+  greshamTechDarkTheme,
+} from './themes/greshamTechTheme';
 import LightIcon from '@material-ui/icons/WbSunny';
 import DarkIcon from '@material-ui/icons/Brightness2';
-
-// GreshamTech Custom Theme
-const greshamTechTheme = createUnifiedTheme({
-  ...createBaseThemeOptions({
-    palette: {
-      ...palettes.light,
-      primary: {
-        main: '#1976d2', // GreshamTech blue
-        dark: '#1565c0',
-        light: '#42a5f5',
-        contrastText: '#ffffff',
-      },
-      secondary: {
-        main: '#dc004e', // GreshamTech accent red
-        dark: '#ad1457',
-        light: '#f06292',
-        contrastText: '#ffffff',
-      },
-      background: {
-        default: '#f5f5f5',
-        paper: '#ffffff',
-      },
-      navigation: {
-        background: '#ffffff',
-        indicator: '#1976d2',
-        color: '#212121',
-        selectedColor: '#1976d2',
-        navItem: {
-          hoverBackground: '#e3f2fd',
-        },
-        submenu: {
-          background: '#ffffff',
-        },
-      },
-    },
-  }),
-  defaultPageTheme: 'home',
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-});
-
-const greshamTechDarkTheme = createUnifiedTheme({
-  ...createBaseThemeOptions({
-    palette: {
-      ...palettes.dark,
-      primary: {
-        main: '#42a5f5',
-        dark: '#1976d2',
-        light: '#64b5f6',
-        contrastText: '#ffffff',
-      },
-      secondary: {
-        main: '#f48fb1',
-        dark: '#dc004e',
-        light: '#f8bbd9',
-        contrastText: '#000000',
-      },
-      navigation: {
-        background: '#1e1e1e',
-        indicator: '#42a5f5',
-        color: '#ffffff',
-        selectedColor: '#42a5f5',
-        navItem: {
-          hoverBackground: '#2d2d2d',
-        },
-        submenu: {
-          background: '#1e1e1e',
-        },
-      },
-    },
-  }),
-  defaultPageTheme: 'home',
-  fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-});
 
 const app = createApp({
   apis,
@@ -177,16 +105,19 @@ const app = createApp({
   themes: [
     {
       id: 'greshamtech-light',
-      title: 'GreshamTech Light',
+      title: 'Gresham Technologies Light',
       variant: 'light',
       icon: <LightIcon />,
       Provider: ({ children }) => (
-        <UnifiedThemeProvider theme={greshamTechTheme} children={children} />
+        <UnifiedThemeProvider
+          theme={greshamTechLightTheme}
+          children={children}
+        />
       ),
     },
     {
       id: 'greshamtech-dark',
-      title: 'GreshamTech Dark',
+      title: 'Gresham Technologies Dark',
       variant: 'dark',
       icon: <DarkIcon />,
       Provider: ({ children }) => (

@@ -46,7 +46,7 @@ const LogoFull = () => {
   return (
     <div className={classes.container}>
       <span className={classes.logo}>
-        Gresham<span className={classes.accent}>Tech</span>
+        Gresham<span className={classes.accent}>Technologies</span>
         <span className={classes.subtitle}>Developer Portal</span>
       </span>
     </div>
