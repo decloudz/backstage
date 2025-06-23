@@ -31,7 +31,7 @@ app:
           - url: https://docs.greshamtech.com
             title: Developer Docs
 
-  packageName: greshamtech-idp
+  packageName: example-app
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
@@ -303,3 +303,6 @@ auth:
 
 permission:
   enabled: true
+
+scorecards:
+  jsonDataUrl: 'https://raw.githubusercontent.com/Oriflame/backstage-plugins/main/plugins/score-card/sample-data/data.json'
