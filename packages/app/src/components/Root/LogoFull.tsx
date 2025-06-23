@@ -15,40 +15,72 @@
  */
 
 import { makeStyles } from '@material-ui/core/styles';
+import * as React from 'react';
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
-    height: 30,
+    height: 40, // Increased height for logo
+    width: 'auto',
   },
   logo: {
-    fontSize: 22,
-    fontWeight: 700,
-    color: theme.palette.primary?.main || '#1976d2',
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    height: '32px', // Adjust height as needed
+    width: 'auto',
+    maxWidth: '200px', // Prevent logo from being too wide
+    objectFit: 'contain',
+  },
+  fallbackText: {
+    fontSize: 20,
+    fontWeight: 600,
+    color: theme.palette.primary?.main || '#003366',
+    fontFamily: '"Inter", "Roboto", "Helvetica Neue", Arial, sans-serif',
     letterSpacing: '-0.5px',
   },
   accent: {
-    color: theme.palette.secondary?.main || '#dc004e',
-  },
-  subtitle: {
-    fontSize: '16px',
-    fontWeight: 400,
-    marginLeft: '8px',
-    color: '#666',
+    color: theme.palette.secondary?.main || '#FF6B35',
   },
 }));
 
 const LogoFull = () => {
   const classes = useStyles();
+  const [imageError, setImageError] = React.useState(false);
+
+  // Try multiple logo file formats
+  const logoSources = [
+    '/gresham-logo-full.svg',
+    '/gresham-logo-full.png',
+    '/gresham-logo.svg',
+    '/gresham-logo.png',
+    '/greshamtech-logo.svg',
+    '/greshamtech-logo.png',
+  ];
+
+  const [currentLogoIndex, setCurrentLogoIndex] = React.useState(0);
+
+  const handleImageError = () => {
+    if (currentLogoIndex < logoSources.length - 1) {
+      setCurrentLogoIndex(prev => prev + 1);
+    } else {
+      setImageError(true);
+    }
+  };
 
   return (
     <div className={classes.container}>
-      <span className={classes.logo}>
-        Gresham<span className={classes.accent}>Technologies</span>
-        <span className={classes.subtitle}>Developer Portal</span>
-      </span>
+      {!imageError ? (
+        <img
+          src={logoSources[currentLogoIndex]}
+          alt="Gresham Technologies"
+          className={classes.logo}
+          onError={handleImageError}
+        />
+      ) : (
+        // Fallback to text logo if no image files are found
+        <span className={classes.fallbackText}>
+          Gresham<span className={classes.accent}>Technologies</span>
+        </span>
+      )}
     </div>
   );
 };

@@ -15,6 +15,7 @@
  */
 
 import { makeStyles } from '@material-ui/core/styles';
+import * as React from 'react';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -22,28 +23,68 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     width: 'auto',
-    height: 28,
+    height: 32,
   },
-  logo: {
-    fontSize: 18,
+  logoIcon: {
+    height: '24px', // Compact size for icon
+    width: 'auto',
+    maxWidth: '40px', // Maximum width for icon
+    objectFit: 'contain',
+  },
+  fallbackText: {
+    fontSize: 16,
     fontWeight: 700,
-    color: theme.palette.primary?.main || '#1976d2',
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    color: theme.palette.primary?.main || '#003366',
+    fontFamily: '"Inter", "Roboto", "Helvetica Neue", Arial, sans-serif',
     letterSpacing: '-0.5px',
   },
   accent: {
-    color: theme.palette.secondary?.main || '#dc004e',
+    color: theme.palette.secondary?.main || '#FF6B35',
   },
 }));
 
 const LogoIcon = () => {
   const classes = useStyles();
+  const [imageError, setImageError] = React.useState(false);
+
+  // Try multiple icon logo file formats
+  const logoIconSources = [
+    '/gresham-logo-icon.svg',
+    '/gresham-logo-icon.png',
+    '/gresham-icon.svg',
+    '/gresham-icon.png',
+    '/greshamtech-icon.svg',
+    '/greshamtech-icon.png',
+    // Fallback to full logo if no icon version exists
+    '/gresham-logo-full.svg',
+    '/gresham-logo-full.png',
+  ];
+
+  const [currentLogoIndex, setCurrentLogoIndex] = React.useState(0);
+
+  const handleImageError = () => {
+    if (currentLogoIndex < logoIconSources.length - 1) {
+      setCurrentLogoIndex(prev => prev + 1);
+    } else {
+      setImageError(true);
+    }
+  };
 
   return (
     <div className={classes.container}>
-      <span className={classes.logo}>
-        G<span className={classes.accent}>T</span>
-      </span>
+      {!imageError ? (
+        <img
+          src={logoIconSources[currentLogoIndex]}
+          alt="Gresham Technologies"
+          className={classes.logoIcon}
+          onError={handleImageError}
+        />
+      ) : (
+        // Fallback to abbreviated text logo if no image files are found
+        <span className={classes.fallbackText}>
+          G<span className={classes.accent}>T</span>
+        </span>
+      )}
     </div>
   );
 };
