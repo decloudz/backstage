@@ -21,13 +21,13 @@ const useStyles = makeStyles(theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
-    height: 40, // Increased height for logo
+    height: 40,
     width: 'auto',
   },
   logo: {
-    height: '32px', // Adjust height as needed
+    height: '32px',
     width: 'auto',
-    maxWidth: '200px', // Prevent logo from being too wide
+    maxWidth: '200px',
     objectFit: 'contain',
   },
   fallbackText: {
@@ -46,37 +46,24 @@ const LogoFull = () => {
   const classes = useStyles();
   const [imageError, setImageError] = React.useState(false);
 
-  // Try multiple logo file formats
-  const logoSources = [
-    '/gresham-logo-full.svg',
-    '/gresham-logo-full.png',
-    '/gresham-logo.svg',
-    '/gresham-logo.png',
-    '/greshamtech-logo.svg',
-    '/greshamtech-logo.png',
-  ];
-
-  const [currentLogoIndex, setCurrentLogoIndex] = React.useState(0);
+  // Official Gresham Technologies logo
+  const logoSrc = '/gresham-logo-dark.svg';
 
   const handleImageError = () => {
-    if (currentLogoIndex < logoSources.length - 1) {
-      setCurrentLogoIndex(prev => prev + 1);
-    } else {
-      setImageError(true);
-    }
+    setImageError(true);
   };
 
   return (
     <div className={classes.container}>
       {!imageError ? (
         <img
-          src={logoSources[currentLogoIndex]}
+          src={logoSrc}
           alt="Gresham Technologies"
           className={classes.logo}
           onError={handleImageError}
         />
       ) : (
-        // Fallback to text logo if no image files are found
+        // Fallback to text logo if image fails to load
         <span className={classes.fallbackText}>
           Gresham<span className={classes.accent}>Technologies</span>
         </span>

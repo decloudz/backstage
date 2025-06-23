@@ -26,9 +26,9 @@ const useStyles = makeStyles(theme => ({
     height: 32,
   },
   logoIcon: {
-    height: '24px', // Compact size for icon
+    height: '20px', // Smaller size for sidebar icon
     width: 'auto',
-    maxWidth: '40px', // Maximum width for icon
+    maxWidth: '32px',
     objectFit: 'contain',
   },
   fallbackText: {
@@ -47,40 +47,24 @@ const LogoIcon = () => {
   const classes = useStyles();
   const [imageError, setImageError] = React.useState(false);
 
-  // Try multiple icon logo file formats
-  const logoIconSources = [
-    '/gresham-logo-icon.svg',
-    '/gresham-logo-icon.png',
-    '/gresham-icon.svg',
-    '/gresham-icon.png',
-    '/greshamtech-icon.svg',
-    '/greshamtech-icon.png',
-    // Fallback to full logo if no icon version exists
-    '/gresham-logo-full.svg',
-    '/gresham-logo-full.png',
-  ];
-
-  const [currentLogoIndex, setCurrentLogoIndex] = React.useState(0);
+  // Official Gresham Technologies logo (same as full logo, but sized smaller)
+  const logoSrc = '/gresham-logo-dark.svg';
 
   const handleImageError = () => {
-    if (currentLogoIndex < logoIconSources.length - 1) {
-      setCurrentLogoIndex(prev => prev + 1);
-    } else {
-      setImageError(true);
-    }
+    setImageError(true);
   };
 
   return (
     <div className={classes.container}>
       {!imageError ? (
         <img
-          src={logoIconSources[currentLogoIndex]}
+          src={logoSrc}
           alt="Gresham Technologies"
           className={classes.logoIcon}
           onError={handleImageError}
         />
       ) : (
-        // Fallback to abbreviated text logo if no image files are found
+        // Fallback to abbreviated text logo if image fails to load
         <span className={classes.fallbackText}>
           G<span className={classes.accent}>T</span>
         </span>
