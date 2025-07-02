@@ -1,5 +1,5 @@
 app:
-  title: Backstage Example App
+  title: GreshamTech Developer Portal
   baseUrl: http://localhost:3000
   experimental:
     packages: all # ✨
@@ -13,18 +13,23 @@ app:
   #   sessionReplaySampleRate: 0
 
   support:
-    url: https://github.com/backstage/backstage/issues # Used by common ErrorPage
+    url: https://greshamtech.atlassian.net/servicedesk # Used by common ErrorPage
     items: # Used by common SupportButton component
-      - title: Issues
-        icon: github
+      - title: IT Support
+        icon: support
         links:
-          - url: https://github.com/backstage/backstage/issues
-            title: GitHub Issues
-      - title: Discord Chatroom
+          - url: https://greshamtech.atlassian.net/servicedesk
+            title: Submit Support Ticket
+      - title: Developer Slack
         icon: chat
         links:
-          - url: https://discord.gg/backstage-687207715902193673
-            title: '#backstage'
+          - url: https://greshamtech.slack.com/channels/developers
+            title: '#developers'
+      - title: Documentation
+        icon: docs
+        links:
+          - url: https://docs.greshamtech.com
+            title: Developer Docs
 
   packageName: example-app
 
@@ -76,7 +81,7 @@ proxy:
         Authorization: Token token=${PAGERDUTY_TOKEN}
 
 organization:
-  name: My Company
+  name: GreshamTech
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -298,3 +303,6 @@ auth:
 
 permission:
   enabled: true
+
+scorecards:
+  jsonDataUrl: 'https://raw.githubusercontent.com/Oriflame/backstage-plugins/main/plugins/score-card/sample-data/data.json'

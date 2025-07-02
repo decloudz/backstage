@@ -85,6 +85,13 @@ import {
 } from '@backstage/plugin-notifications';
 import { CustomizableHomePage } from './components/home/CustomizableHomePage';
 import { HomePage } from './components/home/HomePage';
+import { UnifiedThemeProvider } from '@backstage/theme';
+import {
+  greshamTechLightTheme,
+  greshamTechDarkTheme,
+} from './themes/greshamTechTheme';
+import LightIcon from '@material-ui/icons/WbSunny';
+import DarkIcon from '@material-ui/icons/Brightness2';
 
 const app = createApp({
   apis,
@@ -92,6 +99,32 @@ const app = createApp({
     // Custom icon example
     alert: AlarmIcon,
   },
+  themes: [
+    {
+      id: 'gresham-light',
+      title: 'Gresham Technologies',
+      variant: 'light',
+      icon: <LightIcon />,
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider
+          theme={greshamTechLightTheme}
+          children={children}
+        />
+      ),
+    },
+    {
+      id: 'gresham-dark',
+      title: 'Gresham Technologies Dark',
+      variant: 'dark',
+      icon: <DarkIcon />,
+      Provider: ({ children }) => (
+        <UnifiedThemeProvider
+          theme={greshamTechDarkTheme}
+          children={children}
+        />
+      ),
+    },
+  ],
   featureFlags: [
     {
       name: 'scaffolder-next-preview',

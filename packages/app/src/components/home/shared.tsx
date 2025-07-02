@@ -16,6 +16,11 @@
 
 import { TemplateBackstageLogoIcon } from '@backstage/plugin-home';
 import { makeStyles } from '@material-ui/core/styles';
+import CodeIcon from '@material-ui/icons/Code';
+import CloudIcon from '@material-ui/icons/Cloud';
+import SecurityIcon from '@material-ui/icons/Security';
+import BugReportIcon from '@material-ui/icons/BugReport';
+import HelpIcon from '@material-ui/icons/Help';
 
 export const useLogoStyles = makeStyles(theme => ({
   container: {
@@ -26,34 +31,34 @@ export const useLogoStyles = makeStyles(theme => ({
     height: 100,
   },
   path: {
-    fill: '#7df3e1',
+    fill: theme.palette.primary.main, // Use GreshamTech theme colors
   },
 }));
 
 export const tools = [
   {
-    url: 'https://backstage.io/docs',
-    label: 'Docs',
-    icon: <TemplateBackstageLogoIcon />,
+    url: '/docs',
+    label: 'Documentation',
+    icon: <HelpIcon />,
   },
   {
-    url: 'https://github.com/backstage/backstage',
-    label: 'GitHub',
-    icon: <TemplateBackstageLogoIcon />,
+    url: '/create',
+    label: 'Service Generator',
+    icon: <CodeIcon />,
   },
   {
-    url: 'https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md',
-    label: 'Contributing',
-    icon: <TemplateBackstageLogoIcon />,
+    url: '/api-docs',
+    label: 'API Explorer',
+    icon: <CloudIcon />,
   },
   {
-    url: 'https://backstage.io/plugins',
-    label: 'Plugins Directory',
-    icon: <TemplateBackstageLogoIcon />,
+    url: 'https://greshamtech.atlassian.net',
+    label: 'Issue Tracker',
+    icon: <BugReportIcon />,
   },
   {
-    url: 'https://github.com/backstage/backstage/issues/new/choose',
-    label: 'Submit New Issue',
-    icon: <TemplateBackstageLogoIcon />,
+    url: 'https://greshamtech.com/security',
+    label: 'Security Guidelines',
+    icon: <SecurityIcon />,
   },
 ];
